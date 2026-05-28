@@ -76,51 +76,6 @@ Analysis covers `main` from 2023 onwards (53,932 commits, 185 weeks). Event mark
 
 The same categories from codex apply: large feature drops (Hello Copilot) and merge artifacts (2024). The PR detection heuristic (`#12345` in subject) may undercount if MS uses a different merge style where PR numbers don't always appear in first-parent subjects.
 
-## Useful variations
-
-```bash
-uv run git-weekly-trends --rev-spec main
-uv run git-weekly-trends --rev-spec "main --first-parent"
-uv run python scripts/analyze_repo_history.py
-```
-
-Writes the 3-panel chart SVG and a combined CSV (commit + PR data) that can be reused to regenerate the chart without re-scanning git history:
-
-- [`output/codex_weekly_report_data.csv`](output/codex_weekly_report_data.csv)
-- [`output/codex_weekly_metrics.svg`](output/codex_weekly_metrics.svg)
-
-![Weekly engineering activity chart](output/codex_weekly_metrics.svg)
-
-Redraw the chart from a previously saved CSV:
-
-```bash
-uv run git-weekly-trends \
-  --main-chart-only \
-  --metrics-csv-input output/codex_weekly_report_data.csv
-```
-
-## Notes on the data
-
-Nine weeks exceeded 500,000 significant lines changed. Most of these spikes are from vendored/generated code churn or large-scale refactors, not from a proportional increase in hand-written engineering work.
-
-| Week | Lines | Dominant change | Share |
-|---|---|---|---|
-| 2026-01-26 | 1,126,159 | Vendored protocol schema fixtures (80% `.json`) | Top 5 commits: 36% |
-| 2026-02-16 | 597,938 | Removing generated v1 JSON schema codegen | Top 5 commits: 38% |
-| 2026-03-09 | 935,749 | Moving TUI onto app-server + relocating unit tests (`.rs`) | Top 5 commits: 44% |
-| 2026-03-16 | 600,456 | Extracting capabilities, sandbox, and orchestrator crates | Distributed |
-| 2026-03-23 | 850,211 | Unifying TUI on app-server, deleting legacy TUI (145K lines removed) | Top 5 commits: 51% |
-| 2026-04-20 | 962,434 | OAuth refactor, rollout trace crate, feature flag removals | Distributed (8%) |
-| 2026-04-27 | 606,286 | App-server request-processor split, proto changes | Distributed |
-| 2026-05-11 | 805,254 | TUI module splits, diagnostics, permissions refactor | Distributed (6%) |
-| 2026-05-25 | 1,246,274 | Swapping vendored SQLite amalgamation (84% `.c`) | 2 commits: 93% |
-
-**Vendored code** (Jan 26, Feb 16, May 25) — Generated protobuf schema files, vendored C dependencies, and codegen outputs produce large line counts from simple add/remove operations. The May 25 spike is two commits: one deleting the old SQLite amalgamation (582K lines) and one adding the fixed version (582K lines).
-
-**Large refactors** (Mar 9, Mar 23) — The TUI was migrated onto an app-server architecture. In Mar 23 alone, 145K lines of legacy TUI code were deleted. These are true engineering work but concentrated deletions rather than sustained output.
-
-**High-activity weeks** (Mar 16, Apr 20, Apr 27, May 11) — Top commits account for only 6–14% of total lines, meaning the churn was spread across many smaller changes typical of a busy engineering team.
-
 ## OpenCode — anomalyco/opencode
 
 Analysis covers `--all` from inception (42 weeks, 11,445 commits). A younger project (Aug 2025–present) with rapid growth from a small core team.
