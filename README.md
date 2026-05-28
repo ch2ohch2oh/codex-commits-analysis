@@ -69,7 +69,7 @@ Analysis covers `main` from 2023 onwards (53,932 commits, 185 weeks).
 
 ### Notes on the data
 
-PRs per week and median PR size jumped twice. The first jump (Oct 2025, v1.115) landed deep Copilot integration. The second and larger jump (Jan 2026, v1.109) transformed VS Code into a multi-agent platform — shipping agent session management, Copilot Memory, Claude Agent support, MCP Apps, subagents, and third-party coding agent support (Claude + Codex). Weekly PRs rose from 80–200 to sustained 200–377 starting Jan 2026.
+Weekly PRs rose from 80–200 to sustained 200–377 from Jan 2026 onward, coinciding with the v1.109 release that transformed VS Code into a multi-agent platform (agent sessions, Claude + Codex support, MCP Apps, subagents).
 
 | Week | Lines | Dominant change | Share |
 |---|---|---|---|
