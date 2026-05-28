@@ -340,11 +340,23 @@ def axis_number_formatter(value: float, _position: int) -> str:
     return format_compact_number(int(round(value)))
 
 
+REPO_EVENTS: dict[str, list[tuple[pd.Timestamp, str, str]]] = {
+    "codex": [
+        (pd.Timestamp("2025-12-18"), "GPT-5.2-Codex", "#64748b"),
+        (pd.Timestamp("2026-02-02"), "Codex app +\nGPT-5.3-Codex", "#059669"),
+    ],
+    "vscode": [
+        (pd.Timestamp("2025-06-23"), "Hello Copilot", "#059669"),
+    ],
+}
+
+
 def render_three_panel_plot(
     df: pd.DataFrame,
     output_path: Path,
     *,
     figure_title: str,
+    events: list[tuple[pd.Timestamp, str, str]] | None = None,
 ) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     sns.set_theme(style="whitegrid", context="notebook")
@@ -428,10 +440,8 @@ def render_three_panel_plot(
     axes[2].tick_params(axis="x", pad=8)
     plt.setp(axes[2].get_xticklabels(), rotation=0, ha="center")
 
-    events = [
-        (pd.Timestamp("2025-12-18"), "GPT-5.2-Codex", "#64748b"),
-        (pd.Timestamp("2026-02-02"), "Codex app +\nGPT-5.3-Codex", "#059669"),
-    ]
+    if not events:
+        events = []
     for ax in axes:
         for dt, _label, color in events:
             ax.axvline(x=dt, color=color, linestyle="--", linewidth=1.0, alpha=0.6, zorder=0)
@@ -463,6 +473,7 @@ def build_svg(
     weekly_prs: dict[date, WeeklyPrStats],
     output_path: Path,
     repo_label: str,
+    events: list[tuple[pd.Timestamp, str, str]] | None = None,
 ) -> None:
     df = pd.DataFrame(
         [
@@ -477,10 +488,13 @@ def build_svg(
             for week, stats in weekly.items()
         ]
     )
+    if events is None:
+        events = REPO_EVENTS.get(repo_label)
     render_three_panel_plot(
         df,
         output_path,
         figure_title=f"{to_title_case(repo_label)} Commit & PR Trends",
+        events=events,
     )
 
 
