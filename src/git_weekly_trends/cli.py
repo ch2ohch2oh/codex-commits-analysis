@@ -73,8 +73,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--repo",
-        default="codex",
-        help="Path to the git repository to analyze. Defaults to the codex submodule.",
+        default="repos/codex",
+        help="Path to the git repository to analyze. Defaults to repos/codex.",
     )
     parser.add_argument(
         "--output-dir",

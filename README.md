@@ -2,7 +2,7 @@
 
 A `uv`-managed Python project that renders a 3-panel weekly trend chart (lines changed, PRs per week, median PR size with IQR) from any git repository using seaborn and matplotlib.
 
-The repo includes two git submodules for ready-to-analyze data:
+The repo includes two git submodules under `repos/` for ready-to-analyze data:
 
 - [`openai/codex`](https://github.com/openai/codex) — AI coding agent
 - [`microsoft/vscode`](https://github.com/microsoft/vscode) — Code editor
@@ -21,7 +21,7 @@ This heuristic works well for repos that use squash merges; it will undercount o
 uv run git-weekly-trends
 
 # Analyze another repo
-uv run git-weekly-trends --repo vscode --repo-label vscode --rev-spec "main --after=2020-01-01"
+uv run git-weekly-trends --repo repos/vscode --repo-label vscode --rev-spec "main --after=2023-01-01"
 ```
 
 This writes a 3-panel chart SVG and a combined CSV (commit + PR data) that can be reused to regenerate the chart without re-scanning git history. Redraw from a saved CSV:

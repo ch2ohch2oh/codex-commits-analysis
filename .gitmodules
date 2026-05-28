@@ -1,6 +1,6 @@
 [submodule "codex"]
-	path = codex
+	path = repos/codex
 	url = org-14957082@github.com:openai/codex.git
 [submodule "vscode"]
-	path = vscode
+	path = repos/vscode
 	url = https://github.com/microsoft/vscode.git
