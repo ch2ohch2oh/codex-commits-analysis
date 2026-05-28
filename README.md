@@ -2,11 +2,12 @@
 
 A `uv`-managed Python project that renders a 3-panel weekly trend chart (lines changed, PRs per week, median PR size with IQR) from any git repository using seaborn and matplotlib.
 
-The repo includes three git submodules under `repos/` for ready-to-analyze data:
+The repo includes git submodules under `repos/` for ready-to-analyze data:
 
 - [`openai/codex`](https://github.com/openai/codex) — AI coding agent
 - [`microsoft/vscode`](https://github.com/microsoft/vscode) — Code editor
 - [`anomalyco/opencode`](https://github.com/anomalyco/opencode) — CLI coding agent
+- [`openclaw/openclaw`](https://github.com/openclaw/openclaw) — Personal AI assistant
 
 ## What it measures
 
@@ -95,6 +96,23 @@ Analysis covers `--all` from inception (42 weeks, 11,445 commits). A younger pro
 | 2026-04-06 | 281,748 | Generated code swaps + gitignore cleanup | Top 3 commits: 69% |
 
 The same patterns appear: generated code and model snapshots dominate the line-change spikes, while most engineering work is distributed across many small PRs. PR size grew steadily from a median of ~10 lines in early months to ~70 lines by May 2026, reflecting growing feature complexity.
+
+## OpenClaw — openclaw/openclaw
+
+Analysis covers `--all` from inception (7 weeks, 10,237 commits). A very young project (started May 2026) that saw explosive growth — from 0 to 528 PRs/week in three weeks, with 375K GitHub stars.
+
+![OpenClaw weekly trends](output/openclaw_weekly_metrics.svg)
+
+### Notes on the data
+
+The repo has only ~3 weeks of real history (10,237 commits, ~500 commits/day). Activity ramped from zero to a sustained 1,400–4,800 commits/week almost immediately.
+
+| Week | Lines | Commits | PRs | Note |
+|---|---|---|---|---|
+| 2026-05-04 | 3,980,601 | 2,656 | 97 | Initial burst — massive initial code check-in |
+| 2026-05-11 | 1,451,106 | 4,897 | 473 | Peak commit activity |
+| 2026-05-18 | 419,611 | 1,456 | 528 | Peak PR activity |
+| 2026-05-25 | 435,242 | 1,179 | 232 | Sustained high output |
 
 ## Useful variations
 

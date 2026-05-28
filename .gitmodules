@@ -7,3 +7,6 @@
 [submodule "repos/opencode"]
 	path = repos/opencode
 	url = https://github.com/anomalyco/opencode.git
+[submodule "repos/openclaw"]
+	path = repos/openclaw
+	url = https://github.com/openclaw/openclaw.git
