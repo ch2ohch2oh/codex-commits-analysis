@@ -435,7 +435,9 @@ def render_three_panel_plot(
             handlelength=2.8,
         )
 
-    axes[2].xaxis.set_major_locator(mdates.MonthLocator(interval=3))
+    total_months = max(1, (df["week_start"].max() - df["week_start"].min()).days / 30)
+    label_interval = max(1, round(total_months / 10))
+    axes[2].xaxis.set_major_locator(mdates.MonthLocator(interval=label_interval))
     axes[2].xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
     axes[2].tick_params(axis="x", pad=8)
     plt.setp(axes[2].get_xticklabels(), rotation=0, ha="center")

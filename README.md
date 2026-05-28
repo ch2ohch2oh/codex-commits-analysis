@@ -62,7 +62,7 @@ Nine weeks exceeded 500,000 significant lines changed. Most of these spikes are 
 
 ## VS Code — microsoft/vscode
 
-Analysis covers `main` from 2020 onwards (99,060 commits, 341 weeks). Event marker: Hello Copilot (Jun 2025).
+Analysis covers `main` from 2023 onwards (53,932 commits, 185 weeks). Event marker: Hello Copilot (Jun 2025).
 
 ![VS Code weekly trends](output/vscode_weekly_metrics.svg)
 
@@ -71,11 +71,9 @@ Analysis covers `main` from 2020 onwards (99,060 commits, 341 weeks). Event mark
 | Week | Lines | Dominant change | Share |
 |---|---|---|---|
 | 2025-06-23 | 937,622 | "Hello Copilot" — large initial Copilot code check-in (`.ts`, `.json`) | 1 commit: 96% |
-| 2021-01-11 | 321,392 | Removing vendored grammar extensions (282K lines deleted) | Top 3 commits: 94% |
-| 2021-01-18 | 324,322 | Restoring colorize tests + extensions in core | Top 3 commits: 92% |
 | 2024-04-15 | 233,462 | Merge commits inflating counts (merge of `chat-agent-hover` branch) | Top 3 commits: 95% |
 
-The same categories from codex apply: vendored code removal/restoration (2021 grammar extensions, colorize tests), large feature drops (Hello Copilot), and merge artifacts (2024). The PR detection heuristic (`#12345` in subject) undercounts early years — MS uses a different merge style where PR numbers don't always appear in first-parent subjects.
+The same categories from codex apply: large feature drops (Hello Copilot) and merge artifacts (2024). The PR detection heuristic (`#12345` in subject) may undercount if MS uses a different merge style where PR numbers don't always appear in first-parent subjects.
 
 ## Useful variations
 
