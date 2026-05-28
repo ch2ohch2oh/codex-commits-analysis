@@ -2,10 +2,11 @@
 
 A `uv`-managed Python project that renders a 3-panel weekly trend chart (lines changed, PRs per week, median PR size with IQR) from any git repository using seaborn and matplotlib.
 
-The repo includes two git submodules under `repos/` for ready-to-analyze data:
+The repo includes three git submodules under `repos/` for ready-to-analyze data:
 
 - [`openai/codex`](https://github.com/openai/codex) — AI coding agent
 - [`microsoft/vscode`](https://github.com/microsoft/vscode) — Code editor
+- [`anomalyco/opencode`](https://github.com/anomalyco/opencode) — CLI coding agent
 
 ## What it measures
 
@@ -119,6 +120,23 @@ Nine weeks exceeded 500,000 significant lines changed. Most of these spikes are 
 **Large refactors** (Mar 9, Mar 23) — The TUI was migrated onto an app-server architecture. In Mar 23 alone, 145K lines of legacy TUI code were deleted. These are true engineering work but concentrated deletions rather than sustained output.
 
 **High-activity weeks** (Mar 16, Apr 20, Apr 27, May 11) — Top commits account for only 6–14% of total lines, meaning the churn was spread across many smaller changes typical of a busy engineering team.
+
+## OpenCode — anomalyco/opencode
+
+Analysis covers `--all` from inception (42 weeks, 11,445 commits). A younger project (Aug 2025–present) with rapid growth from a small core team.
+
+![OpenCode weekly trends](output/opencode_weekly_metrics.svg)
+
+### Notes on the data
+
+| Week | Lines | Dominant change | Share |
+|---|---|---|---|
+| 2026-05-11 | 384,840 | Pricing schema update + generated model snapshots | Top 3 commits: 76% |
+| 2025-12-08 | 328,725 | Distributed churn (top 3 only 5%) — normal high activity | Distributed |
+| 2026-02-09 | 293,853 | i18n documentation translations (192K lines) | Top 3 commits: 77% |
+| 2026-04-06 | 281,748 | Generated code swaps + gitignore cleanup | Top 3 commits: 69% |
+
+The same patterns appear: generated code and model snapshots dominate the line-change spikes, while most engineering work is distributed across many small PRs. PR size grew steadily from a median of ~10 lines in early months to ~70 lines by May 2026, reflecting growing feature complexity.
 
 ## Useful variations
 

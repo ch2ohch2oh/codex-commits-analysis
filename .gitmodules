@@ -4,3 +4,6 @@
 [submodule "vscode"]
 	path = repos/vscode
 	url = https://github.com/microsoft/vscode.git
+[submodule "repos/opencode"]
+	path = repos/opencode
+	url = https://github.com/anomalyco/opencode.git
