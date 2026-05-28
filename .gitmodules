@@ -7,3 +7,6 @@
 [submodule "repos/opencode"]
 	path = repos/opencode
 	url = https://github.com/anomalyco/opencode.git
+[submodule "repos/pytorch"]
+	path = repos/pytorch
+	url = https://github.com/pytorch/pytorch.git

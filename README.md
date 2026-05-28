@@ -2,11 +2,12 @@
 
 A `uv`-managed Python project that renders a 3-panel weekly trend chart (lines changed, PRs per week, median PR size with IQR) from any git repository using seaborn and matplotlib.
 
-The repo includes three git submodules under `repos/` for ready-to-analyze data:
+The repo includes git submodules under `repos/` for ready-to-analyze data:
 
 - [`openai/codex`](https://github.com/openai/codex) — AI coding agent
 - [`microsoft/vscode`](https://github.com/microsoft/vscode) — Code editor
 - [`anomalyco/opencode`](https://github.com/anomalyco/opencode) — CLI coding agent
+- [`pytorch/pytorch`](https://github.com/pytorch/pytorch) — Deep learning framework
 
 ## What it measures
 
@@ -95,6 +96,25 @@ Analysis covers `--all` from inception (42 weeks, 11,445 commits). A younger pro
 | 2026-04-06 | 281,748 | Generated code swaps + gitignore cleanup | Top 3 commits: 69% |
 
 The same patterns appear: generated code and model snapshots dominate the line-change spikes, while most engineering work is distributed across many small PRs. PR size grew steadily from a median of ~10 lines in early months to ~70 lines by May 2026, reflecting growing feature complexity.
+
+## PyTorch — pytorch/pytorch
+
+Analysis covers `main` from 2023 onwards (49,841 commits, 179 weeks). A mature project with steady output (~200–500 PRs/week) and near-perfect PR detection (every commit has a `(#PR)` in its subject).
+
+![PyTorch weekly trends](output/pytorch_weekly_metrics.svg)
+
+### Notes on the data
+
+Unlike codex or vscode, pytorch shows no dramatic inflection points — activity grew gradually from ~250 PRs/week in 2023 to ~400 PRs/week by 2026.
+
+| Week | Lines | Dominant change | Share |
+|---|---|---|---|
+| 2024-12-16 | 543,311 | ROCm CK Flash Attention Backend — new backend + revert | 2 commits: 93% |
+| 2024-05-13 | 422,480 | Removing Caffe2 python code (legacy framework remnants) | 3 commits: 86% |
+| 2024-05-06 | 295,537 | Removing unused Caffe2 subdirs (251K lines deleted) | 1 commit: 85% |
+| 2025-07-21 | 309,724 | Removing tensorexpr tests + revert | 3 commits: 36% |
+
+The dominant pattern is **legacy code deletion** — Caffe2 (pytorch's predecessor) code cleanup in mid-2024 and tensorexpr experiment removal in 2025. These are large one-off deletions rather than sustained output.
 
 ## Useful variations
 

@@ -349,6 +349,7 @@ REPO_EVENTS: dict[str, list[tuple[pd.Timestamp, str, str]]] = {
         (pd.Timestamp("2025-06-23"), "Hello Copilot", "#059669"),
     ],
     "opencode": [],
+    "pytorch": [],
 }
 
 
