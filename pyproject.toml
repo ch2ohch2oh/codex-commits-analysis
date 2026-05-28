@@ -1,7 +1,7 @@
 [project]
-name = "codex-commit-analysis"
+name = "git-weekly-trends"
 version = "0.1.0"
-description = "Analyze weekly commit and code churn trends for a git repository."
+description = "3-panel weekly trend charts (lines changed, PRs per week, median PR size) from any git repository."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [project.scripts]
-codex-commit-analysis = "codex_commit_analysis.cli:main"
+git-weekly-trends = "git_weekly_trends.cli:main"
 
 [build-system]
 requires = ["hatchling"]

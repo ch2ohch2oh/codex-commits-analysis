@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from git_weekly_trends.cli import main
 
 

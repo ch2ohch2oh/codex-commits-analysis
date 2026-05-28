@@ -18,16 +18,16 @@ This heuristic works well for repos that use squash merges; it will undercount o
 
 ```bash
 # Analyze the codex repo (default)
-uv run codex-commit-analysis
+uv run git-weekly-trends
 
 # Analyze another repo
-uv run codex-commit-analysis --repo vscode --repo-label vscode --rev-spec "main --after=2020-01-01"
+uv run git-weekly-trends --repo vscode --repo-label vscode --rev-spec "main --after=2020-01-01"
 ```
 
 This writes a 3-panel chart SVG and a combined CSV (commit + PR data) that can be reused to regenerate the chart without re-scanning git history. Redraw from a saved CSV:
 
 ```bash
-uv run codex-commit-analysis \
+uv run git-weekly-trends \
   --main-chart-only \
   --metrics-csv-input output/codex_weekly_report_data.csv
 ```
@@ -78,8 +78,8 @@ The same categories from codex apply: large feature drops (Hello Copilot) and me
 ## Useful variations
 
 ```bash
-uv run codex-commit-analysis --rev-spec main
-uv run codex-commit-analysis --rev-spec "main --first-parent"
+uv run git-weekly-trends --rev-spec main
+uv run git-weekly-trends --rev-spec "main --first-parent"
 uv run python scripts/analyze_repo_history.py
 ```
 
@@ -93,7 +93,7 @@ Writes the 3-panel chart SVG and a combined CSV (commit + PR data) that can be r
 Redraw the chart from a previously saved CSV:
 
 ```bash
-uv run codex-commit-analysis \
+uv run git-weekly-trends \
   --main-chart-only \
   --metrics-csv-input output/codex_weekly_report_data.csv
 ```
@@ -125,13 +125,13 @@ Nine weeks exceeded 500,000 significant lines changed. Most of these spikes are 
 Analyze only the main branch:
 
 ```bash
-uv run codex-commit-analysis --rev-spec main
+uv run git-weekly-trends --rev-spec main
 ```
 
 Analyze the first-parent history of main:
 
 ```bash
-uv run codex-commit-analysis --rev-spec "main --first-parent"
+uv run git-weekly-trends --rev-spec "main --first-parent"
 ```
 
 The legacy wrapper still works if you want a direct script path:
