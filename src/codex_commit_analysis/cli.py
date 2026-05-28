@@ -428,6 +428,25 @@ def render_three_panel_plot(
     axes[2].tick_params(axis="x", pad=8)
     plt.setp(axes[2].get_xticklabels(), rotation=0, ha="center")
 
+    events = [
+        (pd.Timestamp("2025-12-18"), "GPT-5.2-Codex", "#64748b"),
+        (pd.Timestamp("2026-02-02"), "Codex app +\nGPT-5.3-Codex", "#059669"),
+    ]
+    for ax in axes:
+        for dt, _label, color in events:
+            ax.axvline(x=dt, color=color, linestyle="--", linewidth=1.0, alpha=0.6, zorder=0)
+    y_top = axes[0].get_ylim()[1]
+    for dt, label, color in events:
+        axes[0].annotate(
+            label,
+            xy=(dt, y_top),
+            xytext=(0, -3),
+            textcoords="offset points",
+            fontsize=7.5, color=color, ha="center", va="top",
+            annotation_clip=True,
+            bbox=dict(boxstyle="round,pad=0.15", fc="white", ec="none", alpha=0.85),
+        )
+
     fig.text(
         0.08, 0.015,
         "Lines changed = additions + deletions from git log --numstat -w (whitespace-only excluded)  ·  "
