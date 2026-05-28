@@ -480,7 +480,7 @@ def build_svg(
     render_three_panel_plot(
         df,
         output_path,
-        figure_title=f"{to_title_case(repo_label)} Weekly Engineering Activity",
+        figure_title=f"{to_title_case(repo_label)} Commit & PR Trends",
     )
 
 
