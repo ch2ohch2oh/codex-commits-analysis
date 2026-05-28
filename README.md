@@ -63,18 +63,21 @@ Nine weeks exceeded 500,000 significant lines changed. Most of these spikes are 
 
 ## VS Code — microsoft/vscode
 
-Analysis covers `main` from 2023 onwards (53,932 commits, 185 weeks). Event marker: Hello Copilot (Jun 2025).
+Analysis covers `main` from 2023 onwards (53,932 commits, 185 weeks).
 
 ![VS Code weekly trends](output/vscode_weekly_metrics.svg)
 
 ### Notes on the data
 
+PRs per week and median PR size both jumped notably from late Oct 2025, coinciding with the "Hello Copilot (#1493)" commit that landed a 63K-line Copilot feature integration (v1.115 release cycle). Before that, weekly PRs ranged 80–200; after, they sustained 200–377 with larger median sizes.
+
 | Week | Lines | Dominant change | Share |
 |---|---|---|---|
 | 2025-06-23 | 937,622 | "Hello Copilot" — large initial Copilot code check-in (`.ts`, `.json`) | 1 commit: 96% |
+| 2025-10-20 | 161,116 | "Hello Copilot (#1493)" — Copilot deep integration landing | 1 commit: 39% |
 | 2024-04-15 | 233,462 | Merge commits inflating counts (merge of `chat-agent-hover` branch) | Top 3 commits: 95% |
 
-The same categories from codex apply: large feature drops (Hello Copilot) and merge artifacts (2024). The PR detection heuristic (`#12345` in subject) may undercount if MS uses a different merge style where PR numbers don't always appear in first-parent subjects.
+The PR detection heuristic (`#12345` in subject) may undercount if MS uses a different merge style where PR numbers don't always appear in first-parent subjects.
 
 ## OpenCode — anomalyco/opencode
 
